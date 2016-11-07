@@ -1,0 +1,24 @@
+<div ng-controller="CreatePollsCtrl">
+	<div id="main">
+	<form>
+	  <div class="form-group">
+	    <label for="title">Title</label>
+	    <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter title" ng-model="vote.title"/>
+	    <small id="emailHelp" class="form-text text-muted">Enter a title for your poll.</small>
+	  </div>
+	  <div>
+	  	<ul>
+	  		<li ng-repeat="opt in vote.options">[[opt.text]]</li>
+	  	</ul>
+	  </div>
+	  <button ng-click="addOptions()">[[addOption_status]]</button>
+	  <div ng-show="show_add_option_input">
+	  	<input type="text" name="option" ng-model="option" placeholder="enter option and hit enter" required /><button ng-click="addOptionFormSubmit()">Add</button>
+	  	
+	  </div>
+	  <button type="btn btn-default btn-lg" ng-click="submitPoll()">Create Poll</button>
+	 </form>
+	 [[vote]]
+	 </div>
+	 <div id="overlay" style="position: absolute;width: 400px;height: 300px;left: 50%; top: 50%; margin-left: -200px; margin-top: -150px; border: 2px solid #222; display:none;text-align: center; "><h3 style="text-align: center; padding-top: 100px;">Creating poll</h3></div>
+</div>	 

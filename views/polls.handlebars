@@ -1,0 +1,12 @@
+<div ng-controller="PollsCtrl">
+	<div class="jumbotron text-center">
+		<h1>Home</h1>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-1-offset">
+				<div ng-repeat="poll in polls"><a ng-href=/vote/[[poll.pollId]]><h3>[[poll.title]]</h3></a></div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,38 @@
+<div ng-controller="VoteCtrl">
+	<div class="container">
+		<div class="jumbotron text-center">
+			<h1>Vote</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-5">
+				<h3>{{poll.title}}</h3>
+				<ul>
+					{{#each poll.options}}
+						<li class="option" id="{{optionId}}" ng-click="optionClick($event)">{{text}}</li>
+					{{/each}}
+				</ul>
+				<p>Click on a option to vote</p>
+				{{#if user}}
+				<p>or add a option</p><br />
+				<button ng-click="addOptions()">[[addOption_status]]</button>
+	  			<div ng-show="show_add_option_input">
+	  			<input type="text" name="option" ng-model="option" placeholder="enter option and hit enter" required /><button ng-click="addOptionFormSubmit()">Add</button>
+	  			</div>
+	  			{{/if}}
+	  			<br/>
+				<strong><span id="user_voted_msg"></span></strong>
+			</div>
+			<div class="col-md-5">
+				<h3>Vote Status</h3>
+				<canvas id="myChart" width="400" height="250"></canvas>
+			</div>
+			<div id="show_delete" ng-show="show_delete_div">
+				<button ng-click="deletePoll()">Delete Poll</button>
+			</div>
+			<input type="hidden" name="userVotedFor_optionId" value="{{userVotedFor.optionId}}" id="userVotedFor_optionId" />
+			<input  type="hidden" name="poll_author" value="{{poll.author}}" id="poll_author" />
+			<input type="hidden" name="user" value="{{user.twitter.id}}" id="user">
+			<script id="options" type="application/json">{{poll.options}}</script>
+		</div><!--row-->
+	</div><!--container-->
+</div>
