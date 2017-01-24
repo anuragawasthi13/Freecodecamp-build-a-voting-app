@@ -27,6 +27,21 @@ button:hover{
 
 .navbar{
 	margin-bottom: 0;
+	border-radius: 0;
+	position: fixed;
+	top:0;
+	width: 100%;
+	transition: all 0.5s;
+	background-color: #fff;
+	border-bottom: 1px solid #ddd;
+}
+
+.navbar:hover{
+	padding:10px;
+}
+
+.wrapper{
+	padding-top: 110px;
 }
 
 
@@ -106,11 +121,17 @@ poll styling
 	margin: 5px 0;
 	padding: 10px;
 	background-color: #fff;
+	text-decoration: none;
 }
 
 .poll a span{
 	font-size: 18px;
-	
+	border-bottom: 1px solid #fff;
+	transition: all 0.5s;	
+}
+
+.poll a span:hover{
+	border-bottom: 1px solid #337ab7;
 }
 
 
