@@ -1,26 +1,38 @@
 <div ng-controller="VoteCtrl">
-	<div class="container">
-		<div class="jumbotron text-center">
+<div class="jumbotron text-center">
 			<h1>Vote</h1>
 		</div>
+	<div class="container">
+		
 		<div class="row">
 			<div class="col-md-5">
 				<h3>{{poll.title}}</h3>
-				<ul>
+
+				{{#if pollOptionsLength}}
+					<small>Click on a option to vote</small>
+				{{/if}}
+
+				<div class="options-list">
 					{{#each poll.options}}
-						<li class="option" id="{{optionId}}" ng-click="optionClick($event)">{{text}}</li>
+						<div class="option" id="{{optionId}}" ng-click="optionClick($event)">
+							<span class="option-text">{{text}}</span>
+							<span class="option-votes">{{votes}}</span>
+						</div>
 					{{/each}}
-				</ul>
-				<p>Click on a option to vote</p>
+				</div>
+				
+				<strong><span id="user_voted_msg"></span></strong>
+				
 				{{#if user}}
-				<p>or add a option</p><br />
-				<button ng-click="addOptions()">[[addOption_status]]</button>
-	  			<div ng-show="show_add_option_input">
-	  			<input type="text" name="option" ng-model="option" placeholder="enter option and hit enter" required /><button ng-click="addOptionFormSubmit()">Add</button>
+				<small>or add a option</small><br />
+				<button ng-click="addOptions()" ng-cloak>[[addOption_status]]</button>
+	  			<div class="add-option" ng-show="show_add_option_input">
+	  				<input type="text" name="option" ng-model="option" placeholder="enter option and hit enter" required />
+	  				<button ng-click="addOptionFormSubmit()">Add</button>
 	  			</div>
 	  			{{/if}}
 	  			<br/>
-				<strong><span id="user_voted_msg"></span></strong>
+				
 			</div>
 			<div class="col-md-5">
 				<h3>Vote Status</h3>

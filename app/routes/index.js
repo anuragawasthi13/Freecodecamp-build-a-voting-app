@@ -50,7 +50,8 @@ module.exports = function(app, passport) {
 				res.render('vote', {
 					user: req.user,
 					poll: data,
-					userVotedFor: option
+					userVotedFor: option,
+					pollOptionsLength: data.options.length==0?false:true
 				});
 			})
 

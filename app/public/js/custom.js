@@ -22,42 +22,63 @@ app.controller('CreatePollsCtrl', ['$scope', '$http', '$window', function($scope
 		title: "",
 		options: []
 	}
+
+	$scope.error = false;
+	$scope.error_msg = null;
 	var submitPoll = function(e) {
 		console.log($scope.vote);
-		$("#overlay").css("display", "block");
-		$("#main").css("opacity", "0.1");
-		$http({
-			method: 'POST',
-			url: '/api/createpoll',
-			data: $scope.vote
-		}).then(function(response) {
-			console.log(response);
-			setTimeout(function() {
-				$window.location.href = "/yourpolls";
-			}, 2000);
+		
+		if($scope.vote.title){
+			$("#overlay").css("display", "block");
+			$("#main").css("opacity", "0.1");
+			$http({
+				method: 'POST',
+				url: '/api/createpoll',
+				data: $scope.vote
+			}).then(function(response) {
+				console.log(response);
+				setTimeout(function() {
+					$window.location.href = "/yourpolls";
+				}, 2000);
 
-		});
+			});
+		} else{
+			$scope.error = true;
+			$scope.error_msg = "Please enter poll title";
+		}
+			
 	}
 	$scope.addOption_status = "Add Options";
 	$scope.show_add_option_input = false;
+
 	$scope.addOptions = function() {
-		if ($scope.addOption_status == "Add Options") {
+		if ($scope.vote.title && $scope.addOption_status == "Add Options") {
 			$scope.addOption_status = "Done";
 			$scope.show_add_option_input = true;
+			$scope.error = false;
+			$scope.error_msg = "Please enter poll title";
 		} else {
 			$scope.addOption_status = "Add Options";
 			$scope.show_add_option_input = false;
+			$scope.error = true;
+			$scope.error_msg = "Please enter poll title";
 		}
 
 	}
 	$scope.option = "";
+
 	$scope.addOptionFormSubmit = function() {
-		$scope.vote.options.push({
-			"text": $scope.option
-		});
-		console.log($scope.vote);
-		$scope.option = "";
+		
+		if($scope.option){
+			$scope.vote.options.push({
+				"text": $scope.option
+			});
+			console.log($scope.vote);
+			$scope.option = "";
+		}
+	
 	}
+
 	$scope.submitPoll = submitPoll;
 }]);
 
@@ -71,7 +92,7 @@ app.controller('VoteCtrl', ['$scope', '$http', '$window', function($scope, $http
 	var userVotedFor_text;
 	for (var i = 0; i < options.length; i++) {
 		if (userVotedFor == options[i].id) {
-			userVotedFor_text = options[i].textContent;
+			userVotedFor_text = options[i].querySelector(".option-text").textContent;
 		}
 	}
 	if (userVotedFor) {
@@ -122,11 +143,11 @@ app.controller('VoteCtrl', ['$scope', '$http', '$window', function($scope, $http
 			$window.location.href = "/";
 		})
 	}
+
 	$scope.optionClick = function(e) {
-		console.log(e.target.textContent);
 		console.log(window.location.pathname.split("/")[2]);
 		if (userVotedFor && (userVotedFor == e.target.id)) {
-			alert("You have already voted for " + e.target.textContent);
+			alert("You have already voted for " + userVotedFor_text);
 		} else {
 			$http({
 				method: 'POST',
@@ -158,19 +179,19 @@ app.controller('VoteCtrl', ['$scope', '$http', '$window', function($scope, $http
 		}
 		var ctx = document.getElementById("myChart");
 	var myChart = new Chart(ctx, {
-		type: 'bar',
+		type: 'pie',
 		data: {
 			labels: options_labels,
 			datasets: [{
 				label: '# of Votes',
 				data: options_data,
 				backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(153, 102, 255, 0.2)',
-					'rgba(255, 159, 64, 0.2)'
+					'rgba(255, 99, 132, 0.7)',
+					'rgba(54, 162, 235, 0.7)',
+					'rgba(255, 206, 86, 0.7)',
+					'rgba(75, 192, 192, 0.7)',
+					'rgba(153, 102, 255, 0.7)',
+					'rgba(255, 159, 64, 0.7)'
 				],
 				borderColor: [
 					'rgba(255,99,132,1)',
@@ -184,13 +205,7 @@ app.controller('VoteCtrl', ['$scope', '$http', '$window', function($scope, $http
 			}]
 		},
 		options: {
-			scales: {
-				yAxes: [{
-					ticks: {
-						beginAtZero: true
-					}
-				}]
-			}
+			
 		}
 	});
 	})

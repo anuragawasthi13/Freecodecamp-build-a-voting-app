@@ -14,7 +14,7 @@ var port = process.env.PORT || 3000;
 
 var app = express();
 
-mongoose.connect(process.env.MONGOLAB_URL);
+mongoose.connect(process.env.MONGOLAB_URL || "mongodb://localhost/votingapp");
 
 var passport = require("passport");
 

@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 col-md-1-offset">
-				<div ng-repeat="poll in polls"><a ng-href=/vote/[[poll.pollId]]><h3>[[poll.title]]</h3></a></div>
+				<div class="poll" ng-repeat="poll in polls"><a ng-href=/vote/[[poll.pollId]] ng-cloak><span ng-cloak>[[poll.title]]</span></a></div>
 			</div>
 		</div>
 	</div>

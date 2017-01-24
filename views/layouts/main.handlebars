@@ -3,13 +3,15 @@
 <head>
 	<title>Freecodecamp Voting App</title>
 	<link rel="stylesheet" type="text/css" href="/lib/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	<link href="https://fonts.googleapis.com/css?family=Lato|PT+Sans|Roboto" rel="stylesheet" />
 </head>
 <body ng-app="app">
 	<nav class="navbar navbar-default">
 		<ul class="nav navbar-nav">
 			{{#if user}}
 				<li><a href="/logout">Logout {{user.twitter.displayName}}</a></li>
-				<li><a href="/createpoll">create new poll</a></li>
+				<li><a href="/createpoll">Create new poll</a></li>
 				<li><a href="/">Home</a></li>
 				<li><a href="/yourpolls">Your Polls</a></li>
       		{{else}}	

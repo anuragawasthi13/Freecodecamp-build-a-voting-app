@@ -1,0 +1,150 @@
+@import url(https://fonts.googleapis.com/css?family=Lato|PT+Sans|Roboto)
+
+body{
+	background-color: #fff;
+	font-family: 'Roboto', sans-serif;
+}
+
+span{
+	font-family: 'Lato', sans-serif;
+}
+
+button{
+	background-color: #f7f7f9;
+	border-radius: 0;
+	border: 1px solid #666;
+	padding: 5px 10px;
+	font-size: 13px;
+	font-family: 'PT Sans', sans-serif;
+	transition: all 0.5s;
+	margin: 5px 0;
+}
+
+button:hover{
+	background-color: #fff;
+	border: 1px solid #444;
+}
+
+.navbar{
+	margin-bottom: 0;
+}
+
+
+.navbar ul li{
+	transition: all 0.5s;
+}
+
+.navbar ul li:hover{
+	background-color: #fff;
+}
+
+
+
+/**
+
+createpoll styling
+
+**/
+
+
+#main form{
+	width: 60%;
+	margin: 20px 20%;
+	padding: 30px;
+	background-color: #f7f7f9;
+}
+
+#main .form-group input{
+	border-radius: 0;
+	background-color: #fff;
+	padding: 10px;
+	margin: 10px 0;
+} 
+
+.add-option input{
+	border-radius: 0;
+	background-color: #fff;
+	padding: 5px;
+	margin: 10px 0;
+} 
+
+
+#main form button{
+	background-color: #f7f7f9;
+	border-radius: 0;
+	border: 1px solid #666;
+	padding: 5px 10px;
+	font-size: 13px;
+	font-family: 'PT Sans', sans-serif;
+	transition: all 0.5s;
+	margin: 5px 0;
+}
+
+#main form button:hover{
+	background-color: #fff;
+	border: 1px solid #444;
+}
+
+.add-option button{
+	display: block;
+}
+/**
+
+createpoll styling
+
+**/
+
+
+/**
+
+poll styling
+
+**/
+
+.poll a{
+	display: block;
+	margin: 5px 0;
+	padding: 10px;
+	background-color: #fff;
+}
+
+.poll a span{
+	font-size: 18px;
+	
+}
+
+
+/**
+
+poll styling
+
+**/
+.options-list{
+	width: 250px;
+	margin: 20px 0;
+	margin-bottom: 30px;
+	word-wrap: break-word;
+}
+
+.option{
+	width: 100%;
+	display: block;
+	cursor: pointer;
+	padding: 10px;
+	margin: 5px 0;
+	background-color: #f7f7f9;
+}
+
+.option:hover{
+	background-color: #f9f9f9;
+}
+
+.option .option-votes{
+	float:right;
+	color: #000;
+}
+
+#user_voted_msg{
+	display: block;
+	margin: 20px 0;
+}

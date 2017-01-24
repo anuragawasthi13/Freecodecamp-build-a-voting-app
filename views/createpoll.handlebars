@@ -2,18 +2,21 @@
 	<div id="main">
 	<form>
 	  <div class="form-group">
-	    <label for="title">Title</label>
+	    <label for="title">Poll Title</label>
 	    <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter title" ng-model="vote.title"/>
-	    <small id="emailHelp" class="form-text text-muted">Enter a title for your poll.</small>
+	    <small id="emailHelp" class="form-text text-muted">Enter a title for your poll.</small><br />
+	    <small style="color: red;" ng-show="error" ng-cloak>[[error_msg]]</small>
 	  </div>
 	  <div>
 	  	<ul>
-	  		<li ng-repeat="opt in vote.options">[[opt.text]]</li>
+	  		<li ng-repeat="opt in vote.options" ng-cloak>[[opt.text]]</li>
 	  	</ul>
 	  </div>
-	  <button ng-click="addOptions()">[[addOption_status]]</button>
-	  <div ng-show="show_add_option_input">
-	  	<input type="text" name="option" ng-model="option" placeholder="enter option and hit enter" required /><button ng-click="addOptionFormSubmit()">Add</button>
+	  <button ng-click="addOptions()" ng-cloak>[[addOption_status]]</button>
+	  <div class="add-option" ng-show="show_add_option_input">
+
+	  	<input type="text" name="option" ng-model="option" placeholder="enter option" required />
+	  	<button ng-click="addOptionFormSubmit()">Add</button>
 	  	
 	  </div>
 	  <button type="btn btn-default btn-lg" ng-click="submitPoll()">Create Poll</button>
