@@ -11,9 +11,9 @@
 		<ul class="nav navbar-nav">
 			{{#if user}}
 				<li><a href="/logout">Logout {{user.twitter.displayName}}</a></li>
-				<li><a href="/createpoll">Create new poll</a></li>
 				<li><a href="/">Home</a></li>
 				<li><a href="/yourpolls">Your Polls</a></li>
+				<li><a href="/createpoll">Create new poll</a></li>
       		{{else}}	
       			<li><a href="/auth/twitter">Signin with Twitter</a></li>
       			<li><a href="/">Home</a></li>
