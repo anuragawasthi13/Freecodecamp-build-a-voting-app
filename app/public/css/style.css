@@ -42,6 +42,7 @@ button:hover{
 
 .wrapper{
 	padding-top: 110px;
+	padding-bottom: 60px;
 }
 
 
@@ -53,6 +54,10 @@ button:hover{
 	background-color: #fff;
 }
 
+.jumbotron span{
+	font-size: 40px;
+	border-bottom: 1px solid #fff;
+}
 
 
 /**
